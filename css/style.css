@@ -1,0 +1,72 @@
+body, html{
+   height: 100%;
+   padding: 0;
+   background-color: grey !important;
+}
+p{
+    color:ghostwhite;
+}
+.links{
+    color: navajowhite;
+    text-decoration: underline;
+}
+.links:hover{
+    color: skyblue;
+}
+#headerTitle{
+    color:antiquewhite;
+}
+#viz{
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 99%;
+}
+#menu{
+    position:relative;
+    float: right;
+    width: 25%;
+    height: 100%;
+    background-color: #006B94;
+}
+#myDrop{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.spacing{
+    margin: 20px;
+}
+.spacingLabel{
+    margin-left: 20px;
+    margin-bottom: 5px;
+    color: antiquewhite;
+}
+.btn-group{
+    margin-top: 20px;
+}
+#buttonGold{
+    background-color: gold;
+}
+#buttonGold:hover{
+    background-color: goldenrod;
+}
+#buttonSilver{
+    background-color: silver;
+}
+#buttonSilver:hover{
+    background-color: gray;
+}
+#buttonBronze{
+    background-color: #CD7F32;
+}
+#buttonBronze:hover{
+    background-color: saddlebrown;
+}
+
+.h-divider{
+ margin-top:5px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid gray;
+}

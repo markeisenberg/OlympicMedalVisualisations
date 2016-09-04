@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+Generic treemap, based on http://bost.ocks.org/mike/treemap/ and
+http://d3plus.org/examples/advanced/9860411/
+
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Summer Olympic Medals 1896 - 2008</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap-select.min.css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <script src="js/jquery.1.11.min.js"></script>
+    <script src="js/d3.js"></script>
+    <script src="js/d3plus.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+
+    <div id="viz"></div>
+
+    <script src="js/treemap.js"></script>
+
+    <div id="menu">
+        <h1 id="headerTitle" class="spacing">Summer Olympic Medals 1896 - 2008</h1>
+        <p class="spacing">Use this Treemap visualization  to take a look back at the years of Gold, Silver, and Bronze medals in the Summer olympics.</p>
+        
+        <div class="h-divider"></div>
+            
+        <h4 class="spacingLabel">Filter by country:</h4>
+        <div class="spacing" id="myDrop">
+        <select class="selectpicker" id="dropD" onchange="dropdown();">
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Algeria">Algeria</option>
+            <option value="Australasia">Australasia</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Armenia">Armenia</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Azerbaijan">Azerbaijan</option>
+            <option value="Bahamas">Bahamas</option>
+            <option value="Barbados">Barbados</option>
+            <option value="Burundi">Burundi</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Bermuda*">Bermuda*</option>
+            <option value="Belarus">Belarus</option>
+            <option value="Bohemia">Bohemia</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="British West Indies">British West Indies</option>
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Cote d'Ivoire">Cote d'Ivoire</option>
+            <option value="Cameroon">Cameroon</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Djibouti">Djibouti</option>
+            <option value="Dominican Republic">Dominican Republic</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Eritrea">Eritrea</option>
+            <option value="Spain">Spain</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Ethiopia">Ethiopia</option>
+            <option value="Unified team of Germany">Unified team of Germany</option>
+            <option value="Unified team">Unified team</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="West Germany">West Germany</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="East Germany">East Germany</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Germany">Germany</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Greece">Greece</option>
+            <option value="Guyana">Guyana</option>
+            <option value="Haiti">Haiti</option>
+            <option value="Hong Kong*">Hong Kong*</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="India">India</option>
+            <option value="Independent Olympic Participants (1992)">Independent Olympic Participants (1992)</option>
+            <option value="Iran">Iran</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Iceland">Iceland</option>
+            <option value="Israel">Israel</option>
+            <option value="Virgin Islands*">Virgin Islands*</option>
+            <option value="Italy">Italy</option>
+            <option value="Jamaica">Jamaica</option>
+            <option value="Japan">Japan</option>
+            <option value="Kazakhstan">Kazakhstan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Kyrgyzstan">Kyrgyzstan</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lebanon">Lebanon</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Morocco">Morocco</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Moldova">Moldova</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Mongolia">Mongolia</option>
+            <option value="Macedonia">Macedonia</option>
+            <option value="Mozambique">Mozambique</option>
+            <option value="Mauritius">Mauritius</option>
+            <option value="Namibia">Namibia</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Niger">Niger</option>
+            <option value="Norway">Norway</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Panama">Panama</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="North Korea">North Korea</option>
+            <option value="Puerto Rico*">Puerto Rico*</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Romania">Romania</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Russia">Russia</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Serbia">Serbia</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Sudan">Sudan</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Suriname">Suriname</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Syria">Syria</option>
+            <option value="Tanzania">Tanzania</option>
+            <option value="Czechoslovakia">Czechoslovakia</option>
+            <option value="Tonga">Tonga</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Tajikistan">Tajikistan</option>
+            <option value="Togo">Togo</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+            <option value="Tunisia">Tunisia</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="Soviet Union">Soviet Union</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="United States">United States</option>
+            <option value="Uzbekistan">Uzbekistan</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Yugoslavia">Yugoslavia</option>
+            <option value="Zambia">Zambia</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="Mixed teams">Mixed teams</option>
+        </select>
+            </div>
+
+        <h4 class="spacingLabel">Filter by medal:</h4>
+        
+        <div class="spacing">
+            <button id="buttonAll" onclick="allData()" class="btn btn-success" >All medals</button>
+            
+            <div class="btn-group" role="group" aria-label="...">
+            <button id="buttonGold" onclick="goldOnly()" class="btn btn-default">Gold only</button>
+            <button id="buttonSilver" onclick="silverOnly()" class="btn btn-default">Silver only</button>
+            <button id="buttonBronze" onclick="bronzeOnly()" class="btn btn-default">Bronze only</button>
+                </div>
+
+        </div>
+        
+        <div class="h-divider"></div>
+        
+        <h4 class="spacingLabel" >To Scatterplot:</h4>
+
+        <div class="spacing">
+            <a class="links" href="scatterFilter.html" style="font-size: 2em;">Olympic Scatterplot</a>
+        </div>
+        
+        <div class="spacing" style="color:ghostwhite; margin-top: 40px;">
+            Data source: <a class="links" href="https://public.tableau.com/s/resources">Tableau Public Resources</a>
+            Created by: <a class="links" href="http://markeisenberg.org">Mark Eisenberg</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+.axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+            opacity: 1;
+        }
+        
+        .axis text {
+            font-size: 10px;
+        }
+        
+        body {
+            font: 12px sans-serif;
+        }
+        
+        .circles {
+            opacity: .5;
+        }
+        
+        .tipsy {
+            font-size: 11px;
+            margin-top: -10px;
+        }
+        
+        .guide line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+            opacity: 0;
+        }
+        
+        #loading {
+            position: relative;
+            bottom: 400px;
+            left: 30%;
+            font-size: 3em;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border: 2px black solid;
+            font: 12px sans-serif;
+        }
+        
+        td {
+            border: 1px black solid;
+            padding: 5px;
+        }
+        
+        #filter {
+            padding-bottom: 20px;
+        }
+        
+        #goTop {
+            background: rgb(60, 82, 248);
+            padding: 10px;
+            position: fixed;
+            top: -100px;
+            font-size: 2em;
+            color: white;
+            right: 10px;
+        }
